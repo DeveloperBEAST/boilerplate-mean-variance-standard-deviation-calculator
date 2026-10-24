@@ -1,8 +1,21 @@
 import numpy as np
 
-def calculate(list):
+def calculate(a : list):
 
+    if len(a) != 9:
+        raise ValueError("List must contain nine numbers.")
 
+    a = np.array([a]).reshape(3,3)
+    print(a)
+
+    calculations = {
+        'mean':[a.mean(axis=0).tolist(), a.mean(axis=1).tolist(), a.mean().tolist()],
+        'variance': [a.var(axis=0).tolist(), a.var(axis=1).tolist(), a.var().tolist()],
+        'standard deviation': [a.std(axis=0).tolist(), a.std(axis=1).tolist(), a.std().tolist()],
+        'max': [a.max(axis=0).tolist(), a.max(axis=1).tolist(), a.max().tolist()],
+        'min': [a.min(axis=0).tolist(), a.min(axis=1).tolist(), a.min().tolist()],
+        'sum': [a.sum(axis=0).tolist(), a.sum(axis=1).tolist(), a.sum().tolist()]
+    }
 
 
     return calculations
